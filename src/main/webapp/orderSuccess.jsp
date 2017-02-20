@@ -18,19 +18,40 @@
         <h2>Order details:</h2>
         <p>Email = ${myOrder.email}</p>
         <p>Size = ${myOrder.size}</p>
-        <p>Toppings: 
+        <p>
             <%
-                // Checkboxes from a form may or may not be checked. We can use the
-                // following code to get an array of the values that are checked.
-                PizzaOrder po = (PizzaOrder) request.getAttribute("myOrder");
-                if (po.getToppings() != null && po.getToppings().length != 0) {
-                    for (String myTopping : po.getToppings()) {
-                        out.println(myTopping + ", ");
-                    }
-                } else {
-                    out.println(" no toppings were requested");
+            double total=0;
+            String size = request.getParameter("size");
+            String style = request.getParameter("style");
+            if (size.equals("large")) {
+                total += 7;
+                
+            } else if(size.equals("medium")) {
+                    total +=6;
+                    
+            } else {
+                total += 5;
+            }
+            if (style.equals("pan")) {
+                total += 1;
+            } else if(style.equals("hand-tossed")) {
+                    total += .5;
+            } else {
+                total += 0;
+            }
+            String toppings[] = request.getParameterValues("toppings");
+            if (toppings != null && toppings.length != 0)
+            {
+                out.println("<p>Toppings: ");
+                for (String myTopping : toppings)
+                {   total += 0.75;
+                    out.println(myTopping + ", ");
                 }
-            %>
+                out.println("<p>");
+                out.println("Your total is: " + total);
+                out.println("<p>");
+            }
+        %>
         </p>
         <p><a href='home.html'>Return to home page</a></p>
     </body>
