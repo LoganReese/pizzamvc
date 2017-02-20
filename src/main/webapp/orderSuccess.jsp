@@ -1,7 +1,7 @@
 <%-- 
     Document   : order
     Created on : Feb 7, 2017, 3:13:05 PM
-    Author     : John Phillips
+    Author     : Logan Reese
 --%>
 
 <%@page import="pizzamvc.PizzaOrder"%>
@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>John's JSP Pizza Order</title>
+        <title>Logan's JSP Pizza Order</title>
         <link rel="stylesheet" href="mystyle.css">
     </head>
     <body>
